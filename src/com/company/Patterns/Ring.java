@@ -76,6 +76,23 @@ public class Ring {
         Main.save(image, filename);
     }
 
+    public void mask(BufferedImage existingImage){
+        x_res = existingImage.getWidth();
+        y_res = existingImage.getHeight();
+
+        int x_c = x_res / 2;
+        int y_c = y_res / 2;
+
+        for(int i = 0; i < y_res; i++){
+            for(int j = 0; j < x_res; j++){
+
+                calculateMaskedStep(i, j, x_c, y_c, existingImage);
+            }
+        }
+
+        Main.save(existingImage, "masked/ringsMasked");
+    }
+
     private void calculateStepRings(int i, int j, int x_c, int y_c, BufferedImage image){
         double d;
         int r;
@@ -92,6 +109,21 @@ public class Ring {
         else
             image.setRGB(j, i, secondaryColor);
 
+    }
+
+    private void calculateMaskedStep(int i, int j, int x_c, int y_c, BufferedImage existingImage){
+        double d;
+        int r;
+
+        //calculate distance to the image center
+        d = Math.sqrt( (i-y_c) * (i-y_c) + (j-x_c) * (j-x_c) );
+
+        //Find the ring index
+        r = (int) d / w;
+
+        //Make decision on pixel color
+        if(r % 2 == 0)
+            existingImage.setRGB(j, i, primaryColor);
     }
 }
 

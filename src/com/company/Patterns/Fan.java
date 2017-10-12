@@ -45,19 +45,45 @@ public class Fan {
         Main.save(image, "fan");
     }
 
+    public void mask(BufferedImage existingImage){
+        x_res = existingImage.getWidth();
+        y_res = existingImage.getHeight();
+
+        int x_c = x_res / 2;
+        int y_c = y_res / 2;
+
+        for(int i = 0; i< x_res; i++){
+            for(int j = 0; j < y_res; j++){
+                calculateMaskedStep(i, j, x_c, y_c, existingImage);
+            }
+        }
+
+        Main.save(existingImage, "masked/fractalsMasked");
+    }
+
     private void calculateStep(int i, int j, int x_c, int y_c){
         double przyprostokatna = Math.abs(x_c - i);
         double przeciwprostokatna = Math.sqrt((i - x_c) * (i - x_c) + (j - y_c) * (j - y_c));
 
-        double angle = Math.asin(przyprostokatna / przeciwprostokatna);
+        double angle = Math.acos(przyprostokatna / przeciwprostokatna);
 
-        int ang = (int) (angle * 1000);
-
-        System.out.println(ang);
+        int ang = (int) (angle * 100000);
 
         if(ang / segmentWidth % 2 == 0)
             image.setRGB(i, j, primaryColor);
         else
             image.setRGB(i, j, secondaryColor);
+    }
+
+    private void calculateMaskedStep(int i, int j, int x_c, int y_c, BufferedImage existingImage){
+        double przyprostokatna = Math.abs(x_c - i);
+        double przeciwprostokatna = Math.sqrt((i - x_c) * (i - x_c) + (j - y_c) * (j - y_c));
+
+        double angle = Math.acos(przyprostokatna / przeciwprostokatna);
+
+        int ang = (int) (angle * 100000);
+
+        if(ang / segmentWidth % 2 == 0)
+            existingImage.setRGB(i, j, primaryColor);
     }
 }

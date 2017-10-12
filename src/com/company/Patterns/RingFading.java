@@ -73,6 +73,24 @@ public class RingFading {
         Main.save(image, filename);
     }
 
+    public void mask(BufferedImage existingImage){
+        x_res = existingImage.getWidth();
+        y_res = existingImage.getHeight();
+
+        int x_c = x_res / 2;
+        int y_c = y_res / 2;
+
+        for(int i = 0; i < y_res; i++){
+            for(int j = 0; j < x_res; j++){
+
+                calculateMaskedStep(i, j, x_c, y_c, existingImage);
+
+            }
+        }
+
+        Main.save(existingImage, "masked/BluredRingsMasked");
+    }
+
 
 
     private void calculateStepRings(int i, int j, int x_c, int y_c, BufferedImage image){
@@ -89,6 +107,23 @@ public class RingFading {
         int color = Colors.int2RGB((int)(fade * 255), (int) (fade * 255),(int) (fade * 255));
 
         image.setRGB(j, i, color);
+    }
+
+    private void calculateMaskedStep(int i, int j, int x_c, int y_c, BufferedImage existingImage){
+        double d;
+
+        //calculate distance to the image center
+        d = Math.sqrt( (i-y_c) * (i-y_c) + (j-x_c) * (j-x_c) );
+
+        double f = 0.5 * Math.cos(d / w) + 0.5;
+        double fade = f;
+
+        int color = Colors.int2RGB((int)(fade * 255), (int) (fade * 255),(int) (fade * 255));
+        int mixed = existingImage.getRGB(j, i) + color / 2;
+
+
+        //if (fade > 0.5)
+            existingImage.setRGB(j, i, mixed);
     }
 }
 

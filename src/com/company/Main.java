@@ -15,6 +15,7 @@ public class Main {
 
         Ring r = new Ring(1024, 512, 10, "kregi");
         //r.run();
+        //r.mask(image);
         Grid g = new Grid(1024, 512, 10, 5, 5, "siatka");
         //g.run();
         //g.maskImage(image);
@@ -23,6 +24,7 @@ public class Main {
         //c.mask(image);
         RingFading rf = new RingFading(1024, 512, 5, "kregiRozmyte");
         //rf.run();
+        //rf.mask(image);
         ChessDiagonal cd = new ChessDiagonal(1024, 512, 30, "szachyWPoprzek");
         //cd.run();
         //cd.mask(image);
@@ -30,8 +32,9 @@ public class Main {
         //wf.run();
         //wf.mask(image);
 
-        Fan fan = new Fan(1024, 512, 1, "fan");
+        Fan fan = new Fan(1024, 512, 100, "fan");
         fan.run();
+        fan.mask(image);
     }
 
 
