@@ -73,6 +73,8 @@ public class RingFading {
         Main.save(image, filename);
     }
 
+
+
     private void calculateStepRings(int i, int j, int x_c, int y_c, BufferedImage image){
         double d;
         int r;
@@ -80,7 +82,8 @@ public class RingFading {
         //calculate distance to the image center
         d = Math.sqrt( (i-y_c) * (i-y_c) + (j-x_c) * (j-x_c) );
 
-        double fade = 0.5 * Math.cos(d / w) + 0.5;
+        double f = 0.5 * Math.cos(d / w) + 0.5;
+        double fade = 1 - f;
 
 
         int color = Colors.int2RGB((int)(fade * 255), (int) (fade * 255),(int) (fade * 255));

@@ -50,6 +50,18 @@ public class ChessDiagonal {
 
     }
 
+    public void mask(BufferedImage existingImage){
+        int i,j;
+
+        for(i = 0; i<existingImage.getWidth();i++){
+            for(j = 0; j<existingImage.getHeight(); j++){
+                calculationMaskedStep(i, j, existingImage);
+            }
+        }
+
+        Main.save(existingImage, "chessDiagonalMasked");
+    }
+
     private void calculationStep(int i, int j){
         //double diagonalSize = Math.sqrt(fieldSize * fieldSize + fieldSize * fieldSize);
 
@@ -67,6 +79,21 @@ public class ChessDiagonal {
             image.setRGB(i, j, primaryColor);
         } else{
             image.setRGB(i,j, secondaryColor);
+        }
+    }
+
+    private void calculationMaskedStep(int i, int j, BufferedImage existingImage){
+        int fieldNumberX = (int) ( Math.abs(i + j) / fieldSize);
+
+        //odległość
+        double distance = Math.abs(i - j+x_res);
+        int fieldNumberY = (int) (distance / fieldSize);
+
+        if(fieldNumberY % 2 == 0)
+            fieldNumberX += 1;
+
+        if(fieldNumberX % 2 == 0){
+            existingImage.setRGB(i, j, primaryColor);
         }
     }
 }

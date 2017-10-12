@@ -10,19 +10,28 @@ import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
+        BufferedImage image = ImageIO.read(new File("sunrise.bmp"));
+
         Ring r = new Ring(1024, 512, 10, "kregi");
         //r.run();
         Grid g = new Grid(1024, 512, 10, 5, 5, "siatka");
         //g.run();
+        //g.maskImage(image);
         Chess c = new Chess(1024, 512, 42, "szachy");
         //c.run();
+        //c.mask(image);
         RingFading rf = new RingFading(1024, 512, 5, "kregiRozmyte");
         //rf.run();
         ChessDiagonal cd = new ChessDiagonal(1024, 512, 30, "szachyWPoprzek");
-        cd.run();
+        //cd.run();
+        //cd.mask(image);
         WeirdStuff wf = new WeirdStuff(1024, 512, 10, "weird");
         //wf.run();
+        //wf.mask(image);
+
+        Fan fan = new Fan(1024, 512, 1, "fan");
+        fan.run();
     }
 
 

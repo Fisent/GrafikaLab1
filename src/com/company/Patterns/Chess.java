@@ -50,6 +50,20 @@ public class Chess {
 
     }
 
+    public void mask(BufferedImage existingImage){
+
+
+        int i,j;
+
+        for(i = 0; i<existingImage.getWidth(); i++){
+            for(j = 0; j<existingImage.getHeight(); j++){
+                calculateMaskedStep(i, j, existingImage);
+            }
+        }
+
+        Main.save(existingImage, "masked/chessMasked");
+    }
+
     private void calculationStep(int i, int j){
         int x_fields = x_res / fieldSize;
 
@@ -64,6 +78,21 @@ public class Chess {
             image.setRGB(i, j, primaryColor);
         } else{
             image.setRGB(i,j, secondaryColor);
+        }
+    }
+
+    private void calculateMaskedStep(int i , int j, BufferedImage existingImage){
+        int x_fields = x_res / fieldSize;
+
+        int fieldNumberX = i / fieldSize;
+        int fieldNumberY = j / fieldSize;
+
+        if(fieldNumberY % 2 == 0)
+            fieldNumberX += 1;
+
+
+        if(fieldNumberX % 2 == 0){
+            existingImage.setRGB(i, j, primaryColor);
         }
     }
 }
