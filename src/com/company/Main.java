@@ -32,7 +32,7 @@ public class Main {
         //wf.run();
         //wf.mask(image);
 
-        Fan fan = new Fan(1024, 512, 100, "fan");
+        Fan fan = new Fan(1024, 512, 500, "fan");
         fan.run();
         fan.mask(image);
     }

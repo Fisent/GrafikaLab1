@@ -79,9 +79,9 @@ public class Fan {
         double przyprostokatna = Math.abs(x_c - i);
         double przeciwprostokatna = Math.sqrt((i - x_c) * (i - x_c) + (j - y_c) * (j - y_c));
 
-        double angle = Math.acos(przyprostokatna / przeciwprostokatna);
+        double angle = Math.asin(przyprostokatna / przeciwprostokatna);
 
-        int ang = (int) (angle * 100000);
+        int ang = (int) (angle * 1000);
 
         if(ang / segmentWidth % 2 == 0)
             existingImage.setRGB(i, j, primaryColor);
