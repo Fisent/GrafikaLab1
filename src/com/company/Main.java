@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        BufferedImage image = ImageIO.read(new File("sunrise.bmp"));
+        BufferedImage image = ImageIO.read(new File("sunset.png"));
 
         Ring r = new Ring(1024, 512, 10, "kregi");
         //r.run();
@@ -32,9 +32,9 @@ public class Main {
         //wf.run();
         //wf.mask(image);
 
-        Fan fan = new Fan(1024, 512, 500, "fan");
+        Fan fan = new Fan(1024, 512, 20, "fan");
         fan.run();
-        fan.mask(image);
+        //fan.mask(image);
     }
 
 
