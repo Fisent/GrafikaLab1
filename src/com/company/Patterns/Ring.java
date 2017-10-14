@@ -90,7 +90,7 @@ public class Ring {
             }
         }
 
-        Main.save(existingImage, "masked/ringsMasked");
+        Main.save(existingImage, "ringsMasked");
     }
 
     private void calculateStepRings(int i, int j, int x_c, int y_c, BufferedImage image){

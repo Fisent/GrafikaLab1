@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedImage image = ImageIO.read(new File("sunset.png"));
 
-        Ring r = new Ring(1024, 512, 10, "kregi");
+        Ring r = new Ring(1024, 512, 2, "kregi");
         //r.run();
         //r.mask(image);
         Grid g = new Grid(1024, 512, 10, 5, 5, "siatka");
@@ -33,7 +33,7 @@ public class Main {
         //wf.mask(image);
 
         Fan fan = new Fan(1024, 512, 20, "fan");
-        fan.run();
+        //fan.run();
         //fan.mask(image);
     }
 
