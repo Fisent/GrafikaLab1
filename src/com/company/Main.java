@@ -35,6 +35,8 @@ public class Main {
         Fan fan = new Fan(1024, 512, 20, "fan");
         //fan.run();
         //fan.mask(image);
+
+        Dots.run(1024, 512, 50, 0.4f, "kropki");
     }
 
 
