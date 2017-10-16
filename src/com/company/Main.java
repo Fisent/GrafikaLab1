@@ -37,7 +37,8 @@ public class Main {
         //fan.mask(image);
 
         //Dots.run(1024, 512, 50, 0.4f, "kropki");
-        LittleRings.run(1024, 512, 50, 5, "maleKregi");
+        //LittleRings.run(1024, 512, 50, 5, "maleKregi");
+        RingsVariableWidth.run(1024, 512, 1, "kregiZmiennaGrubosc");
     }
 
 
