@@ -38,7 +38,13 @@ public class Main {
 
         //Dots.run(1024, 512, 50, 0.4f, "kropki");
         //LittleRings.run(1024, 512, 50, 5, "maleKregi");
-        RingsVariableWidth.run(1024, 512, 1, "kregiZmiennaGrubosc");
+        //RingsVariableWidth.run(1024, 512, 1, "kregiZmiennaGrubosc");
+
+
+        BufferedImage mix1 = ImageIO.read(new File("mix1.bmp"));
+        BufferedImage mix2 = ImageIO.read(new File("mix2.bmp"));
+        //LinearMixing.mix(50, mix1, mix2);
+        LinearMixing.mixGrey(10,mix1, mix2, "zmieszane");
     }
 
 

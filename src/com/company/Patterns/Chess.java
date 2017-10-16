@@ -65,8 +65,6 @@ public class Chess {
     }
 
     private void calculationStep(int i, int j){
-        int x_fields = x_res / fieldSize;
-
         int fieldNumberX = i / fieldSize;
         int fieldNumberY = j / fieldSize;
 
