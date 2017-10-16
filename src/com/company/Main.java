@@ -36,7 +36,8 @@ public class Main {
         //fan.run();
         //fan.mask(image);
 
-        Dots.run(1024, 512, 50, 0.4f, "kropki");
+        //Dots.run(1024, 512, 50, 0.4f, "kropki");
+        LittleRings.run(1024, 512, 50, 5, "maleKregi");
     }
 
 
